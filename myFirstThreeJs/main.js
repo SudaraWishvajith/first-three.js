@@ -59,16 +59,23 @@ function addStar(){
 
 Array(200).fill().forEach(addStar);
 
+function moveCamera(){
+  const t = document.body.getBoundingClientRect().top;
+  earth.rotation.y += 0.01;
+
+  camera.position.z = t * -0.05;
+
+}
+document.body.onscroll = moveCamera;
 
 function animate() {
   requestAnimationFrame( animate );
 
   //earth.rotation.x += 0.001; 
-  earth.rotation.y += 0.01;
+  
   //earth.rotation.z += 0.01;
 
   controls.update();
-  
   renderer.render(scene, camera);
 }
 
