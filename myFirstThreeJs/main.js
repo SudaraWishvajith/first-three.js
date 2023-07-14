@@ -15,9 +15,8 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
-//renderer.render(scene, camera);
+// Earth
 const earthTexture = new THREE.TextureLoader().load('earth.jpg');
-
 const earth = new THREE.Mesh(
   new THREE.SphereGeometry( 5, 32, 16 ),
   new THREE.MeshStandardMaterial({
@@ -28,6 +27,20 @@ const earth = new THREE.Mesh(
 scene.add(earth);
 earth.position.setZ(30);
 earth.position.setX(10);
+
+// moon
+const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry( 1, 32, 16 ),
+  new THREE.MeshStandardMaterial({
+    map: moonTexture
+  })
+
+);
+scene.add(moon);
+moon.position.setY(5);
+moon.position.setZ(30);
+moon.position.setX(18);
 
 // lightnings
 const pointLight = new THREE.PointLight(0xffffff);
