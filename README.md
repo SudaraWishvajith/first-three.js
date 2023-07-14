@@ -1,1 +1,2 @@
-# Portfolio-three.js
+# Earth - Scrollable 3D Animation with Three.js
+
