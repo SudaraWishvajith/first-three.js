@@ -27,7 +27,7 @@ const earth = new THREE.Mesh(
 );
 scene.add(earth);
 earth.position.setZ(30);
-earth.position.setX(-10);
+earth.position.setX(10);
 
 // lightnings
 const pointLight = new THREE.PointLight(0xffffff);
@@ -62,7 +62,6 @@ Array(200).fill().forEach(addStar);
 function moveCamera(){
   const t = document.body.getBoundingClientRect().top;
   earth.rotation.y += 0.01;
-
   camera.position.z = t * -0.05;
 
 }
@@ -72,7 +71,6 @@ function animate() {
   requestAnimationFrame( animate );
 
   //earth.rotation.x += 0.001; 
-  
   //earth.rotation.z += 0.01;
 
   controls.update();
