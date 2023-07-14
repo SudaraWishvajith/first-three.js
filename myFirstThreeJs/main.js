@@ -28,7 +28,7 @@ scene.add(earth);
 earth.position.setZ(30);
 earth.position.setX(10);
 
-// moon
+// Moon
 const moonTexture = new THREE.TextureLoader().load('moon.jpg');
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry( 1, 32, 16 ),
@@ -53,9 +53,9 @@ const spaceBackground = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceBackground;
 
 // Helpers
-const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(lightHelper, gridHelper);
+// const lightHelper = new THREE.PointLightHelper(pointLight);
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls (camera, renderer.domElement);
 
@@ -74,7 +74,9 @@ Array(200).fill().forEach(addStar);
 
 function moveCamera(){
   const t = document.body.getBoundingClientRect().top;
-  earth.rotation.y += 0.01;
+  earth.rotation.y += 0.02;
+  moon.rotation.y += 0.04;
+  moon.rotation.y += 0.01;
   camera.position.z = t * -0.05;
 
 }
@@ -82,9 +84,6 @@ document.body.onscroll = moveCamera;
 
 function animate() {
   requestAnimationFrame( animate );
-
-  //earth.rotation.x += 0.001; 
-  //earth.rotation.z += 0.01;
 
   controls.update();
   renderer.render(scene, camera);
