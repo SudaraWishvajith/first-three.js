@@ -25,19 +25,24 @@ const earth = new THREE.Mesh(
   })
 
 );
-
 scene.add(earth);
+earth.position.setZ(30);
+earth.position.setX(-10);
 
+// lightnings
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(10,5,15,10000);
-
 const ambiantLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambiantLight);
 
+// add backgound
 const spaceBackground = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceBackground;
+
+// Helpers
 const lightHelper = new THREE.PointLightHelper(pointLight);
 const gridHelper = new THREE.GridHelper(200, 50);
+scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls (camera, renderer.domElement);
 
@@ -53,7 +58,7 @@ function addStar(){
 }
 
 Array(200).fill().forEach(addStar);
-scene.add(lightHelper, gridHelper);
+
 
 function animate() {
   requestAnimationFrame( animate );
